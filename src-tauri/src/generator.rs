@@ -32,14 +32,11 @@ pub fn create_docx(content: &str, settings: &LayoutSettings) -> Docx {
         section = section.footer(footer);
     }
 
-    let line_spacing_twips = layout.char_size_twips as i32;
-
     for line in content.lines() {
         let text = if line.is_empty() { "\u{3000}" } else { line }; // full-width space for blank lines
 
         let p = Paragraph::new()
             .align(AlignmentType::Both)
-            .line_spacing(LineSpacing::new().line(line_spacing_twips))
             .add_run(Run::new().add_text(text).size(layout.font_size_half_pt));
 
         section = section.add_paragraph(p);
