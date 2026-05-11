@@ -1,0 +1,49 @@
+    Checking tauri-app v0.1.0 (/Users/63n/Documents/Git/Kumihan/src-tauri)
+error[E0308]: mismatched types
+  --> src/lib.rs:58:60
+   |
+58 |         section_property = section_property.text_direction(TextDirectionType::TbRl);
+   |                                             -------------- ^^^^^^^^^^^^^^^^^^^^^^^- help: try using a conversion method: `.to_string()`
+   |                                             |              |
+   |                                             |              expected `String`, found `TextDirectionType`
+   |                                             arguments to this method are incorrect
+   |
+note: method defined here
+  --> /Users/63n/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/docx-rs-0.4.20/src/documents/elements/section_property.rs:76:12
+   |
+76 |     pub fn text_direction(mut self, direction: String) -> Self {
+   |            ^^^^^^^^^^^^^^
+
+error[E0599]: no method named `set_section_property` found for struct `docx_rs::Docx` in the current scope
+   --> src/lib.rs:61:17
+    |
+61  |     docx = docx.set_section_property(section_property);
+    |                 ^^^^^^^^^^^^^^^^^^^^
+    |
+help: there is a method `custom_property` with a similar name, but with different arguments
+   --> /Users/63n/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/docx-rs-0.4.20/src/documents/mod.rs:622:5
+    |
+622 |     pub fn custom_property(mut self, name: impl Into<String>, item: impl Into<String>) -> Self {
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+error[E0599]: no method named `add_page_number` found for struct `docx_rs::Run` in the current scope
+  --> src/lib.rs:68:52
+   |
+68 |                 .add_run(Run::new().add_text("- ").add_page_number().add_text(" -"))
+   |                                                    ^^^^^^^^^^^^^^^ method not found in `docx_rs::Run`
+
+error[E0599]: no method named `add_footer_definition` found for struct `docx_rs::Docx` in the current scope
+  --> src/lib.rs:70:21
+   |
+70 |         docx = docx.add_footer_definition(footer);
+   |                     ^^^^^^^^^^^^^^^^^^^^^
+   |
+help: there is a method `add_section` with a similar name
+   |
+70 -         docx = docx.add_footer_definition(footer);
+70 +         docx = docx.add_section(footer);
+   |
+
+Some errors have detailed explanations: E0308, E0599.
+For more information about an error, try `rustc --explain E0308`.
+error: could not compile `tauri-app` (lib) due to 4 previous errors
