@@ -1,6 +1,0 @@
-    Blocking waiting for file lock on package cache
-    Blocking waiting for file lock on package cache
-    Blocking waiting for file lock on package cache
-    Blocking waiting for file lock on package cache
-    Checking tauri-app v0.1.0 (/Users/63n/Documents/Git/Kumihan/src-tauri)
-    Finished `dev` profile [unoptimized + debuginfo] target(s) in 1.54s
