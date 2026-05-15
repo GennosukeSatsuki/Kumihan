@@ -1,39 +1,42 @@
 <!doctype html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tauri App</title>
+    <title>Kumihan - Word流し込みツール</title>
     <script type="module" src="/main.js" defer></script>
   </head>
 
   <body>
     <main class="container">
-      <h1>Welcome to Tauri</h1>
+      <header>
+        <h1>Kumihan</h1>
+        <p class="subtitle">TXTファイルをWordテンプレートに流し込みます</p>
+      </header>
 
-      <div class="row">
-        <a href="https://tauri.app" target="_blank">
-          <img src="/assets/tauri.svg" class="logo tauri" alt="Tauri logo" />
-        </a>
-        <a
-          href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-          target="_blank"
-        >
-          <img
-            src="/assets/javascript.svg"
-            class="logo vanilla"
-            alt="JavaScript logo"
-          />
-        </a>
+      <div id="drop-zone" class="drop-zone">
+        <div class="drop-content">
+          <div class="icon">📄</div>
+          <p>ここにTXTファイルをドラッグ＆ドロップ</p>
+          <span class="hint">またはクリックしてファイルを選択</span>
+        </div>
       </div>
-      <p>Click on the Tauri logo to learn more about the framework</p>
 
-      <form class="row" id="greet-form">
-        <input id="greet-input" placeholder="Enter a name..." />
-        <button type="submit">Greet</button>
-      </form>
-      <p id="greet-msg"></p>
+      <div id="status-container" class="status-container hidden">
+        <div class="spinner"></div>
+        <p id="status-msg">処理中...</p>
+      </div>
+
+      <div id="result-container" class="result-container hidden">
+        <div class="success-icon">✓</div>
+        <p id="result-msg"></p>
+        <button id="reset-btn">別のファイルを処理する</button>
+      </div>
+
+      <footer>
+        <p>Windows / Mac (Apple Silicon) / Linux 対応</p>
+      </footer>
     </main>
   </body>
 </html>
